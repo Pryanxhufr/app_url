@@ -16,7 +16,7 @@ def send_telegram_message(text):
         "parse_mode": "HTML"
     }
     try:
-        requests.post(url, data=payload, timeout=10)
+        requests.post(url, data=payload, timeout=5)
     except:
         pass
 
@@ -28,23 +28,35 @@ def run_request():
     while True:
         try:
             response1 = requests.get(url1)
-            response2 = requests.get(url2)
-            response3 = requests.get(url1)
+            print(response1.text)
 
-            if response3.ok:
-                main_response = requests.get(response3.text)
+            response2 = requests.get(url2)
+            print(response2.text)
+
+            response3 = requests.get(main_app_url_provider)
+            print("response 3:", response3.text)
+
+            url_to_fetch = response3.text.strip()
+
+            if "https" in url_to_fetch:
+                print("ok")
+                main_response = requests.get(url_to_fetch)
+                print(main_response.text)
+                print(main_response)
+
                 msg = (
                     "🚀 <b>Everything's live — the server is running perfectly!</b>\n\n"
                     f"<b>Response 1:</b> {response1.status_code}\n"
                     f"<b>Response 2:</b> {response2.status_code}\n"
                     f"<b>Response 3:</b> {response3.status_code}\n"
-                    f"<b>Response 3 Text:</b>\n<code>{response3.text}</code>\n"
+                    f"<b>Response 3 Text:</b>\n<code>{response3.text.strip()}</code>\n"
                     f"<b>Response 4:</b> {main_response.status_code}"
                 )
                 send_telegram_message(msg)
         except:
             pass
-        time.sleep(20)
+
+        time.sleep(40)
 
 @app.route('/')
 def hello_world():
