@@ -23,7 +23,7 @@ def send_telegram_message(text):
 def run_request():
     url1 = "https://apis-3kns.onrender.com/?product_id=3"
     url2 = "https://imgbot-3y9h.onrender.com"
-    main_app_url_provider = "https://raw.githubusercontent.com/Pryanxhufr/app_url/refs/heads/main/main.txt"
+    main_app_url_provider = "https://raw.githubusercontent.com/Pryanxhufr/test/refs/heads/main/main.txt"
 
     while True:
         try:
