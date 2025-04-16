@@ -5,7 +5,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-BOT_TOKEN = "6776785129:AAE-jNcD1cQpu703lVKaedgB-6eTycO4dNc"
+BOT_TOKEN = "6725481041:AAFU_9qn9Vwd96hxEj9j2FfNfBz8jVY0Ugc"
 USER_ID = "5122281931"
 
 def send_telegram_message(text):
